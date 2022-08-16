@@ -37,29 +37,37 @@ function App() {
 
   React.useEffect(() => {
     onChangeFromPrice(fromPrice);
+
+    // eslint-disable-next-line
   }, [fromCurrency, fromPrice]);
 
   React.useEffect(() => {
     onChangeToPrice(toPrice);
+
+    // eslint-disable-next-line
   }, [toCurrency, toPrice]);
 
   return (
     <div>
-      <Header />
-      <div className="App">
-        <Block
-          value={fromPrice}
-          currency={fromCurrency}
-          onChangeCurrency={setFromCurrency}
-          onChangeValue={onChangeFromPrice}
-        />
-        <Block
-          value={toPrice}
-          currency={toCurrency}
-          onChangeCurrency={setToCurrency}
-          onChangeValue={onChangeToPrice}
-        />
-      </div>
+      {ratesRef && (
+        <>
+          <Header />
+          <div className="App">
+            <Block
+              value={fromPrice}
+              currency={fromCurrency}
+              onChangeCurrency={setFromCurrency}
+              onChangeValue={onChangeFromPrice}
+            />
+            <Block
+              value={toPrice}
+              currency={toCurrency}
+              onChangeCurrency={setToCurrency}
+              onChangeValue={onChangeToPrice}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }
